@@ -1,0 +1,6 @@
+@import url(../../assets/global.css);
+
+/* Left panel: enable vertical scroll for long layer lists. */
+eox-layout-item:first-child {
+  overflow-y: auto;
+}

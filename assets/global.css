@@ -1,0 +1,184 @@
+/*
+ * Shared workshop styles. Every exercise's style.css imports this file, keeping
+ * brand colours, fonts, and common component styles in one place.
+ */
+@import "@fontsource/open-sans/400.css";
+@import "@fontsource/open-sans/600.css";
+@import "@fontsource/exo-2/600.css";
+@import "@fontsource/exo-2/700.css";
+
+:root {
+  /* EOPF brand palette (from the EOPF Brand design tokens) */
+  --eopf-teal: #00ae9d;
+  --eopf-teal-700: #00766b;
+  --eopf-blue: #009bdb;
+  --eopf-gold: #fbab18;
+  --eopf-navy: #003047;
+  --eopf-surface: #ffffff;
+  --eopf-outline: #c2ced4;
+  --eopf-bg: #f5f7f8;
+
+  /* EOPF brand type: Open Sans for body, Exo 2 for headings. */
+  --eopf-font-body:
+    "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --eopf-font-head: "Exo 2", var(--eopf-font-body);
+  /* EOx web components read these. */
+  --eox-body-font-family: var(--eopf-font-body);
+  --eox-header-font-family: var(--eopf-font-head);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--eopf-font-body);
+  color: var(--eopf-navy);
+  background: var(--eopf-bg);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--eopf-font-head);
+}
+
+/* Fade custom elements in once defined, avoiding a flash of unstyled markup. */
+:not(:defined) {
+  opacity: 0;
+}
+:defined {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* ---- Common EOxElements component styling ---- */
+eox-layout {
+  height: 100%;
+}
+
+eox-layout-item {
+  border: 1px solid var(--eopf-outline);
+  border-radius: 8px;
+  background: var(--eopf-surface);
+}
+
+eox-map,
+eox-layercontrol {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Allows a panel to scroll when its content (e.g. a config form) overflows. */
+.scroll-y {
+  overflow-y: auto;
+}
+
+/* ---- Floating workshop nav (assets/appbar.js) ---- */
+.workshop-appbar {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  background: var(--eopf-surface);
+  border: 1px solid var(--eopf-outline);
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 48, 71, 0.1);
+  color: var(--eopf-navy);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1;
+  font-family: var(--eopf-font-body);
+}
+
+.workshop-appbar a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.workshop-appbar svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.workshop-appbar .wb-home,
+.workshop-appbar .wb-toggle a,
+.workshop-appbar .wb-edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 6px;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.workshop-appbar .wb-home:hover {
+  background: var(--eopf-bg);
+}
+
+/* Vertical hairline divider. */
+.workshop-appbar .wb-sep {
+  align-self: stretch;
+  width: 1px;
+  margin: 4px 2px;
+  background: var(--eopf-outline);
+}
+
+.workshop-appbar .wb-num {
+  padding: 0 0.4rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--eopf-teal-700);
+}
+
+.workshop-appbar .wb-toggle {
+  display: inline-flex;
+  gap: 2px;
+}
+.workshop-appbar .wb-toggle a {
+  opacity: 0.6;
+}
+.workshop-appbar .wb-toggle a:hover {
+  background: var(--eopf-bg);
+  opacity: 1;
+}
+.workshop-appbar .wb-toggle a.on {
+  background: var(--eopf-navy);
+  color: #fff;
+  opacity: 1;
+}
+
+.workshop-appbar .wb-edit {
+  border: 1px solid var(--eopf-outline);
+}
+.workshop-appbar .wb-edit:hover {
+  border-color: var(--eopf-navy);
+}
+
+.workshop-appbar a:focus-visible {
+  outline: 2px solid var(--eopf-teal);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workshop-appbar a {
+    transition: none;
+  }
+}

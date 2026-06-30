@@ -1,0 +1,5 @@
+@import url(../../assets/global.css);
+
+eox-layout-item:first-child {
+  overflow-y: auto;
+}

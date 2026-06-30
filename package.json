@@ -1,0 +1,38 @@
+{
+  "name": "@eopf-explorer/foss4g-eu-26-workshop",
+  "version": "1.0.0",
+  "description": "Workshop for the EOPF Sentinel Zarr Explorer: visualizing cloud-native GeoZarr Copernicus Sentinel data with EOxElements, eox-storytelling, TiTiler, eodash, and Jupyter EOxElements.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EOPF-Explorer/foss4g-eu-26-workshop.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "check": "eslint . --fix"
+  },
+  "dependencies": {
+    "@eodash/eodash": "https://pkg.pr.new/@eodash/eodash@394",
+    "@eox/eslint-config": "^2.1.0",
+    "@eox/jsonform": "^1.12.1",
+    "@eox/layercontrol": "^1.7.0",
+    "@eox/layout": "^1.0.0",
+    "@eox/map": "^2.6.0",
+    "@eox/storytelling": "^1.11.0",
+    "@eox/ui": "^1.1.0",
+    "@fontsource/exo-2": "^5.2.8",
+    "@fontsource/open-sans": "^5.2.7",
+    "@openglobus/og": "^0.28.7",
+    "color-legend-element": "^1.5.0",
+    "zarrita": "^0.7.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vite": "^7.0.0",
+    "vite-plugin-static-copy": "^4.1.1"
+  }
+}

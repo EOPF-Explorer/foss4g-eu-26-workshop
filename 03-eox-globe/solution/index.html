@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EOPF Workshop 03 - 3D Globe</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <eox-map id="globe"></eox-map>
+
+    <div id="toolbar">
+      <button id="toggle">Switch to 3D</button>
+      <span class="label">Fly to:</span>
+      <button class="fly" data-lon="12.12" data-lat="46.54">
+        Milano Cortina
+      </button>
+      <button class="fly" data-lon="4.35" data-lat="50.85">Brussels</button>
+      <button class="fly" data-lon="-9.14" data-lat="38.73">Lisbon</button>
+      <button class="fly" data-lon="-20.12" data-lat="63.54">Iceland</button>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="/shared/appbar.js"></script>
+  </body>
+</html>

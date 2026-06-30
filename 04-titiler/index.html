@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EOPF Workshop 04 - TiTiler (server-side)</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Uncomment the layout: layer control + map, with the config tool turned on. -->
+    <!--
+    <eox-layout gap="8" style="height: 100vh;">
+      <eox-layout-item x="0" y="0" w="3" h="12">
+        <eox-layercontrol
+          for="eox-map#my-map"
+          tools='["config", "opacity", "info"]'
+        ></eox-layercontrol>
+      </eox-layout-item>
+      <eox-layout-item x="3" y="0" w="9" h="12">
+        <eox-map id="my-map" projection="EPSG:3857"></eox-map>
+      </eox-layout-item>
+    </eox-layout>
+    -->
+
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="/shared/appbar.js"></script>
+  </body>
+</html>

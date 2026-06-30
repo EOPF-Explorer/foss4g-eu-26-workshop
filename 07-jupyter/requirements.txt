@@ -1,0 +1,17 @@
+# Exercise 07 — EOxElements in Jupyter
+# Create a virtual environment (Python >= 3.12.11), then install:
+#   python3 -m venv .venv && source .venv/bin/activate   (Windows: .venv\Scripts\activate)
+#   pip install -r requirements.txt
+
+jupyterlab==4.6.1
+ipyeoxelements==1.1.0
+ipywidgets==8.1.8
+anywidget==0.11.0
+ipykernel>=6.29,<7
+
+# Reading the GeoZarr store directly in Python (the chart cell). zarr 3.x reads the
+# Zarr v3 store over HTTPS via fsspec + aiohttp.
+zarr==3.2.1
+fsspec==2026.6.0
+aiohttp==3.14.1
+numpy==2.5.0
