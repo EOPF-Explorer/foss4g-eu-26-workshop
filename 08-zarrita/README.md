@@ -1,8 +1,5 @@
 # 08: GeoZarr deep-dive with zarrita.js (optional)
 
-> If-time-permits segment. Every other exercise consumed GeoZarr through a component;
-> here we open a store directly and see what is inside.
-
 OpenLayers reads GeoZarr in the browser via [zarrita.js](https://github.com/manzt/zarrita.js).
 This exercise uses zarrita directly — no map component — to open a Sentinel-2 store,
 read bands into typed arrays, and paint a true-colour composite onto a `<canvas>`.

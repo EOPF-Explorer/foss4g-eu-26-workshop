@@ -58,7 +58,9 @@ await import("@eodash/eodash/webcomponent");
 
 ## Try it
 
-Pick a collection in the catalogue, then select an item. The map renders it and the layer control updates. All widgets remain consistent because they share eodash's central store.
+Pick a an item from the catalogue. The map renders it and the layer control updates. All widgets remain consistent because they share eodash's central store.
+
+Click on the layer to expand the bands editor and update the bands from the geozarr directly.
 
 ## Compare
 

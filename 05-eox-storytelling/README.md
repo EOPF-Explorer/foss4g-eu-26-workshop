@@ -1,6 +1,6 @@
 # 05: Storytelling
 
-`eox-storytelling` turns a **Markdown file** into a scrollytelling experience: as the reader scrolls, the map animates between view states you define inline. No layout code, no event wiring — just Markdown with a few special HTML comments.
+`eox-storytelling` creates scrollytelling experience using **Markdown**: as the reader scrolls, the map animates between view states you define inline. No layout code, no event wiring — just Markdown with a few special HTML comments.
 
 ## Result
 
@@ -29,7 +29,6 @@ A single element holds the whole story. Point it at a Markdown file with `markdo
 
 `show-nav` adds the navigation bar across the top.
 
-> The Markdown file must be a **static asset** referenced by an **absolute** URL. A relative path would be resolved against the component's module, not the page, and fail to load. This exercise keeps its story in a colocated `public/` folder — `05-eox-storytelling/public/story.md` — served at `/05-eox-storytelling/public/story.md` (Vite serves it in dev; `vite-plugin-static-copy` in `vite.config.js` also copies it on build).
 
 ## Write the story
 
