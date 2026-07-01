@@ -5,9 +5,17 @@ Web visualization techniques and resources for the **GeoZarr** specification.
 Build interactive web mapping applications on cloud-native Copernicus Sentinel data
 (GeoZarr on S3) using **EOxElements** (OpenLayers-based web components),**eox-storytelling**, **TiTiler**, **eodash**, and **Jupyter EOxElements** for Jupyter Notebooks.
 
-## Prerequisites
+## What you'll learn
 
-Install before the session:
+- Read cloud-native GeoZarr straight from S3
+- Style and combine bands in the browser
+- Render server-side tiles and band-math (NDVI, SWIR) with TiTiler
+- Build a scrollytelling story
+- Build a STAC-driven dashboard
+- Visualize Interactive components in Jupyter notebooks
+
+
+## Prerequisites
 
 - **Node.js 24 or above** — runs the browser exercises (01-06, 08) and the dev server.
 - **Python 3.12.11 or above**, with `venv` and `pip` — for the Jupyter exercise (07);
@@ -20,7 +28,6 @@ Install before the session:
   basic DOM integration.
 - **Python — beginner:** only for the Jupyter EOxElements section (07).
 
-**Level:** intermediate.
 
 ## Setup
 
@@ -29,11 +36,11 @@ npm install
 npm run dev
 ```
 
-Then open the landing page at **http://localhost:3000/** and pick an exercise.
+Then open the landing page at **http://localhost:3000/** and start with exercise 01.
 
 > The exercises are plain JavaScript. A `tsconfig.json` is included if you want JSDoc
 > annotations and `// @ts-check` for inline type checking, or TypeScript — Vite handles
-> both. Geospatial concepts help but are not required.
+> both.
 
 ## Exercises
 
@@ -54,10 +61,10 @@ exercises have a `.ipynb`. Every folder has a `README.md` to follow.
 
 ## Tech stack
 
-- **Vite + npm**
+- **Vite + npm** 
 - **EOxElements** — OpenLayers-based web components (`eox-map`, `eox-layercontrol`, `eox-jsonform`, `eox-storytelling`)
 - **OpenGlobus** — 3D globe (`eox-map` globe plugin)
-- **eodash** (`eo-dash`) — STAC-driven dashboards
+- **eodash** — STAC-driven dashboards
 - **TiTiler-EOPF** — server-side tile rendering
 - **EOxElements-Jupyter** (`ipyeoxelements`) — the components inside notebooks
 - **zarrita.js** — direct GeoZarr reads
