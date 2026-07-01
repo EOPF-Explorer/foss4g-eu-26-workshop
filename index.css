@@ -1,0 +1,519 @@
+/* Landing page — minimal layout on top of EOxUI + the EOPF theme. */
+
+/* FOUC guard: index.html hides the body until index.js adds `.ready`. */
+body:not(.ready) {
+  visibility: hidden;
+}
+body {
+  background: var(--background);
+  font-family: var(--eopf-font-body);
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+/* The landing sections stack vertically; keep #app out of any BeerCSS grid. */
+#app {
+  display: block;
+}
+
+/* Headings use the EOPF display face. */
+.hero h1,
+.section-head h2,
+.exercise h3 {
+  font-family: var(--eopf-font-head);
+}
+body:not(.ready) {
+  opacity: 0;
+}
+
+/* Thin brand accent across the very top of the page. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--eopf-teal);
+  z-index: 50;
+}
+
+/* ---- Hero ---- */
+.hero {
+  background: var(--eopf-navy);
+  color: #fff;
+  padding: var(--space-8) var(--space-3) var(--space-6);
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.hero img {
+  height: 52px;
+  margin-bottom: var(--space-4);
+}
+
+.hero .eyebrow {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--eopf-teal);
+  margin-bottom: var(--space-1);
+}
+
+.hero h1 {
+  margin: 0 0 var(--space-2);
+  font-size: 2.6rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.hero p {
+  max-width: 60ch;
+  margin: 0 0 var(--space-4);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.hero .cta-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.hero .meta {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---- Layout ---- */
+main.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-3) var(--space-3);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: var(--space-6) 0 var(--space-3);
+}
+main.container > .section-head:first-child {
+  margin-top: 0;
+}
+
+.section-head .idx {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--eopf-teal-700);
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--on-surface);
+}
+
+.section-head .rule {
+  flex: 1;
+  height: 1px;
+  background: var(--outline);
+}
+
+/* ---- Cards ---- */
+.grid {
+  align-items: stretch;
+}
+
+.exercise {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  background: var(--surface);
+  border: 1px solid var(--outline);
+  border-radius: 8px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.exercise:hover,
+.exercise:focus-within {
+  border-color: var(--eopf-teal);
+  box-shadow: 0 6px 20px rgba(0, 48, 71, 0.1);
+  transform: translateY(-2px);
+}
+
+.exercise .num {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--eopf-teal-700);
+}
+
+.exercise .body {
+  flex: 1;
+}
+
+.exercise h3 {
+  margin: var(--space-1) 0 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--on-surface);
+}
+
+.exercise p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--on-surface-variant);
+}
+
+.exercise nav {
+  display: flex;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+.btn-primary {
+  background: var(--eopf-navy);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--eopf-navy-700);
+}
+.btn-ghost {
+  color: var(--eopf-navy);
+  border: 1px solid var(--outline);
+}
+.btn-ghost:hover {
+  border-color: var(--eopf-navy);
+}
+/* Trigger on the dark hero: transparent with a light outline, teal on hover. */
+.btn-explore {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+.btn-explore:hover {
+  border-color: var(--eopf-teal);
+  color: var(--eopf-teal);
+}
+
+/* Visible focus ring for keyboard users */
+.btn:focus-visible {
+  outline: 2px solid var(--eopf-teal);
+  outline-offset: 2px;
+}
+
+/* ---- Upcoming cards ---- */
+.exercise.soon {
+  background: transparent;
+  border-style: dashed;
+}
+.exercise.soon .num,
+.exercise.soon h3 {
+  color: var(--on-surface-variant);
+}
+.tag-soon {
+  align-self: flex-start;
+  margin-top: var(--space-3);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  background: var(--surface-variant);
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+}
+
+/* ---- GeoZarr explorer (modal) ---- */
+.ze-modal {
+  width: min(960px, 92vw);
+  max-height: 85vh;
+  padding: 0;
+  border: 1px solid var(--outline);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--on-surface);
+  box-shadow: 0 24px 60px rgba(0, 32, 48, 0.35);
+  overflow: hidden;
+}
+.ze-modal::backdrop {
+  background: rgba(0, 32, 48, 0.55);
+  backdrop-filter: blur(2px);
+}
+.ze-modal[open] {
+  display: flex;
+  flex-direction: column;
+}
+.ze-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-3) var(--space-2);
+}
+.ze-modal-head h2 {
+  margin: 0;
+  font-family: var(--eopf-font-head);
+  font-size: 1.15rem;
+  color: var(--on-surface);
+}
+.ze-modal-close {
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--on-surface-variant);
+  cursor: pointer;
+}
+.ze-modal-close:hover {
+  background: var(--background);
+  color: var(--on-surface);
+}
+.ze-modal .ze-intro {
+  margin: 0 var(--space-3) var(--space-3);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--on-surface-variant);
+}
+.ze-modal code {
+  font-size: 0.85em;
+  background: var(--surface-variant);
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+}
+
+.ze-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: var(--space-3);
+  padding: 0 var(--space-3) var(--space-3);
+}
+@media (max-width: 760px) {
+  .ze-grid {
+    grid-template-columns: 1fr;
+    overflow: auto;
+  }
+}
+
+.ze-tree,
+.ze-detail {
+  min-height: 0;
+  padding: var(--space-2);
+  background: var(--surface);
+  border: 1px solid var(--outline);
+  border-radius: 8px;
+  overflow: auto;
+}
+
+.ze-children {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ze-children .ze-children {
+  margin-left: 0.55rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--surface-variant);
+}
+.ze-node > .ze-children {
+  display: none;
+}
+.ze-node.ze-open > .ze-children {
+  display: block;
+}
+
+.ze-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.3rem 0.4rem;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  font: inherit;
+  color: var(--on-surface);
+  text-align: left;
+  cursor: pointer;
+}
+.ze-row:hover {
+  background: var(--background);
+}
+.ze-row.ze-selected {
+  background: var(--secondary-container);
+}
+
+.ze-caret {
+  flex: none;
+  width: 0.7rem;
+  color: var(--on-surface-variant);
+}
+.ze-caret::before {
+  content: "▸";
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.ze-node.ze-open > .ze-row .ze-caret::before {
+  transform: rotate(90deg);
+}
+.ze-caret.ze-leaf::before {
+  content: "";
+}
+
+.ze-name {
+  flex: 1;
+  font-size: 0.9rem;
+}
+.ze-badge {
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+.ze-badge.ze-group {
+  background: var(--surface-variant);
+  color: var(--on-surface-variant);
+}
+.ze-badge.ze-array {
+  background: var(--secondary-container);
+  color: var(--on-secondary-container);
+}
+
+.ze-detail-title {
+  margin: 0 0 var(--space-2);
+  font-family: var(--eopf-font-head);
+  font-size: 0.95rem;
+  word-break: break-all;
+  color: var(--on-surface);
+}
+.ze-kvs {
+  margin: 0;
+}
+.ze-kv {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  border-top: 1px solid var(--surface-variant);
+  font-size: 0.85rem;
+}
+.ze-kv:first-child {
+  border-top: 0;
+}
+.ze-kv dt {
+  color: var(--on-surface-variant);
+}
+.ze-kv dd {
+  margin: 0;
+  color: var(--on-surface);
+}
+.ze-kv dd a {
+  color: var(--eopf-teal-700);
+  text-decoration: none;
+}
+.ze-kv dd a:hover {
+  text-decoration: underline;
+}
+.ze-tag {
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-size: 0.72rem;
+}
+.ze-hint {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--on-surface-variant);
+}
+
+/* ---- Footer ---- */
+footer.container {
+  max-width: 1080px;
+  margin: var(--space-4) auto 0;
+  padding: var(--space-4) var(--space-3) var(--space-6);
+  border-top: 1px solid var(--outline);
+}
+footer.container .links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem var(--space-2);
+  font-size: 0.85rem;
+}
+footer.container .links a {
+  color: var(--eopf-teal-700);
+  text-decoration: none;
+}
+footer.container .links a:hover {
+  text-decoration: underline;
+}
+footer.container .links a:not(:last-child)::after {
+  content: "·";
+  margin-left: var(--space-2);
+  color: var(--outline);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero {
+    padding: var(--space-6) var(--space-2) var(--space-4);
+  }
+}
+
+/* ---- Motion preferences ---- */
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .exercise,
+  .btn {
+    transition: none;
+  }
+  .exercise:not(.soon):hover,
+  .exercise:not(.soon):focus-within {
+    transform: none;
+  }
+}

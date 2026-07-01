@@ -1,0 +1,33 @@
+@import url(../../assets/global.css);
+
+#toolbar {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+#toolbar .label {
+  font-size: 0.85rem;
+  color: var(--eopf-navy);
+}
+
+#toolbar button {
+  border: 1px solid var(--eopf-outline);
+  border-radius: 4px;
+  background: white;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+}
+
+#toolbar button:hover {
+  background: var(--eopf-bg);
+}

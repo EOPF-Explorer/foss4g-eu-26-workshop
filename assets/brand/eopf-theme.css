@@ -1,0 +1,58 @@
+/*
+ * EOPF brand theme for EOxUI (BeerCSS).
+ * Palette from the EOPF Brand design tokens (eopf-variables.json).
+ * Must be imported after "@eox/ui/style.css" to override the default Material theme.
+ */
+
+:root {
+  --eopf-teal: #00ae9d;
+  --eopf-teal-700: #00766b; /* AA-safe teal for text on light */
+  --eopf-blue: #009bdb;
+  --eopf-gold: #fbab18;
+  --eopf-navy: #003047;
+  --eopf-navy-700: #002130;
+  --eopf-danger: #ed1b2f;
+
+  /* EOPF brand type: Open Sans for body, Exo 2 for headings. */
+  --eopf-font-body:
+    "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --eopf-font-head: "Exo 2", var(--eopf-font-body);
+  /* EOx web components read these. */
+  --eox-body-font-family: var(--eopf-font-body);
+  --eox-header-font-family: var(--eopf-font-head);
+
+  /* 8px base spacing scale (Swiss modular rhythm) */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+}
+
+/* Map the EOPF palette onto BeerCSS Material color roles (light mode). */
+body.light {
+  --primary: #003047; /* navy — primary actions */
+  --on-primary: #ffffff;
+  --primary-container: #cfe1ea;
+  --on-primary-container: #002130;
+
+  --secondary: #00ae9d; /* teal — accent */
+  --on-secondary: #ffffff;
+  --secondary-container: #d6f2ef;
+  --on-secondary-container: #00766b;
+
+  --tertiary: #fbab18; /* gold */
+  --on-tertiary: #00111a;
+  --tertiary-container: #fef2da;
+  --on-tertiary-container: #ab7410;
+
+  --background: #f5f7f8;
+  --surface: #ffffff;
+  --on-surface: #00111a;
+  --surface-variant: #ebeef0;
+  --on-surface-variant: #48606b; /* muted text, AA on white */
+  --outline: #c2ced4;
+
+  --error: #ed1b2f;
+}
