@@ -116,3 +116,4 @@ Next, try out [section 02](../02-eox-advanced/README.md).
 ## Further reading
 
 - [EOxElements Storybook](https://eox-a.github.io/EOxElements/) — full component API reference, properties, and examples
+- [OpenLayers Flatstyle Expressions](https://openlayers.org/en/latest/apidoc/module-ol_expr_expression.html)
