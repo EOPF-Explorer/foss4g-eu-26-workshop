@@ -37,7 +37,7 @@ The globe projects your OpenLayers layers automatically. Use:
 - OpenStreetMap base (`Tile` + `XYZ`, same URL as previous exercises). Set
   `source.crossOrigin = "anonymous"` so the globe engine can read the tile pixels.
 - One Sentinel-2 GeoZarr per fly-to location (`WebGLTile` + `GeoZarr` source, bands
-  `["b04", "b03", "b02"]`, same true-colour style as exercise 01). Fetch a scene URL
+  `["b04", "b03", "b02"]`, with the true-colour `style` provided in main.js). Fetch a scene URL
   for each location's bbox with `fetchGeoZarrUrl`, e.g. `await Promise.all(...)`, then
   map the locations to layers. The `GeoZarr` source comes from the advanced
   layers/sources plugin.
@@ -53,7 +53,7 @@ The map loads in 2D; terrain is enabled when you first switch to the globe.
 
 ## Interactivity
 
-- **Toggle 2D/3D** — wire the provided toggle button: flip `map.projection` between `"EPSG:3857"` and `"globe"`, and enable terrain (`map.globeConfig.terrain = true`) when entering the globe.
+- **Toggle 2D/3D** — wire the provided toggle button: flip `map.projection` between `"EPSG:3857"` and `"globe"`. The fly-to handler is already provided in main.js.
 
 ## How it works
 

@@ -1,1 +1,22 @@
 @import url(../assets/global.css);
+
+/* Floating style-switch button, top-right over the map. */
+#ndvi-button {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 1000;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--eopf-outline);
+  border-radius: 6px;
+  background: var(--eopf-surface);
+  color: var(--eopf-navy);
+  font-family: var(--eopf-font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 48, 71, 0.1);
+}
+#ndvi-button:hover {
+  border-color: var(--eopf-navy);
+}

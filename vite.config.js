@@ -11,6 +11,7 @@ export default defineConfig({
       targets: [
         { src: "05-eox-storytelling/public/*", dest: "." },
         { src: "05-eox-storytelling/solution/public/*", dest: "." },
+        { src: "assets/*", dest: "assets" },
       ],
     }),
   ],

@@ -102,6 +102,7 @@ export function renderLanding() {
         <div class="cta-row">
           <a class="btn btn-primary" href="${pageHref(hero.cta.dir)}" title="Opens exercise 01 in the browser">${hero.cta.label} →</a>
           <button class="btn btn-explore" id="zarr-modal-open" type="button" title="Inspect a live Sentinel-2 GeoZarr store">Explore a GeoZarr store</button>
+          <a class="btn btn-explore" href="${hero.slides.href}" target="_blank" rel="noopener" title="Workshop slides (PDF)">${hero.slides.label}</a>
           <span class="meta">${hero.meta}</span>
         </div>
       </div>

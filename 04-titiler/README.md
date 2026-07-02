@@ -67,7 +67,7 @@ Query parameters control the rendering:
 | Param | Meaning | Example |
 |-------|---------|---------|
 | `variables` | Band path in the Zarr (repeat once per RGB channel) | `/measurements/reflectance:b04` |
-| `rescale` | Min,max reflectance to stretch to 0-255 | `0,0.2` |
+| `rescale` | Min,max reflectance to stretch to 0-255 | `0,0.5` |
 | `color_formula` | Colour pipeline | `gamma rgb 1.3, sigmoidal rgb 8 0.1, saturation 1.2` |
 
 The two parameters that shape the visual output are `rescale` and `color_formula`:

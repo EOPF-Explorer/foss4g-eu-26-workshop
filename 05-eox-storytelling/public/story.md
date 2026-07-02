@@ -13,13 +13,14 @@ A natural-color composite — the area roughly as the human eye would see it.
 
 <!--
   TODO: add a second tour step here.
-  Copy the `### <!--{ ... }-->` line above, then:
+  Copy the `###` config line above, then:
     1. change the layer's `bands` to the SWIR combination ["b12", "b8a", "b04"]
-    2. give the step a `#### Short-Wave Infrared (SWIR)` title and a short description
+    2. give the step a `#### Short-Wave Infrared (SWIR)` title and this description:
+
+  **Bands: SWIR2 (B12), NIR (B8A), Red (B04)**
+  With NIR on the green channel, healthy vegetation glows bright green, while water
+  is near-black and bare soil and built-up areas appear in browns, magentas, and
+  greys. Short-wave infrared also cuts through haze and highlights moisture.
+
   Scroll the result to flip between True Color and SWIR.
 -->
-
-**Bands: SWIR2 (B12), NIR (B8A), Red (B04)**
-With NIR on the green channel, healthy vegetation glows bright green, while water
-is near-black and bare soil and built-up areas appear in browns, magentas, and
-greys. Short-wave infrared also cuts through haze and highlights moisture.

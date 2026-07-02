@@ -22,8 +22,11 @@ const esc = (s) =>
  */
 async function resolveStoreRoot() {
   try {
-    const root = (await fetchGeoZarrUrl()).split("/zarr.json")[0];
-    const id = root.split("/").at(-1);
+    const root = (await fetchGeoZarrUrl()).split("/measurements/")[0];
+    const id = root
+      .split("/")
+      .at(-1)
+      .replace(/\.zarr$/, "");
     if (root && id) return { root, id };
   } catch (err) {
     console.warn("GeoZarr lookup failed; using pinned fallback store", err);
@@ -287,13 +290,13 @@ export async function mountZarrTree(treeEl, detailEl) {
   try {
     const { root, id } = await resolveStoreRoot();
     const store = new zarr.FetchStore(root);
-    const consildatedMetadata = await zarr.withConsolidatedMetadata(store);
+    const consolidatedMetadata = await zarr.withConsolidatedMetadata(store);
     const bytes = await store.get("/zarr.json");
     const meta = JSON.parse(new TextDecoder().decode(bytes));
     const nodes = meta.consolidated_metadata?.metadata;
     if (!nodes) throw new Error("no consolidated metadata on this store");
 
-    const { root: tree, byPath } = buildTree(consildatedMetadata.contents());
+    const { root: tree, byPath } = buildTree(consolidatedMetadata.contents());
     if (!tree?.children.size) {
       treeEl.innerHTML = `<p class="ze-hint">No nodes found in this store's metadata.</p>`;
       return;
@@ -304,11 +307,6 @@ export async function mountZarrTree(treeEl, detailEl) {
     tree.name = id;
     treeEl.innerHTML = `<ul class="ze-children ze-rootlist">${renderNode(tree)}</ul>`;
     treeEl.dataset.item = id;
-    ["", "measurements", "measurements/reflectance"].forEach((p) => {
-      treeEl
-        .querySelector(`.ze-node[data-path="${p}"]`)
-        ?.classList.add("ze-open");
-    });
 
     treeEl.addEventListener("click", async (e) => {
       const rowEl = e.target.closest(".ze-row");
@@ -330,7 +328,7 @@ export async function mountZarrTree(treeEl, detailEl) {
         detailEl.innerHTML = `<p class="ze-hint">Opening ${esc(label)}…</p>`;
         try {
           const obj = await zarr.open(
-            zarr.root(consildatedMetadata).resolve(node.path),
+            zarr.root(consolidatedMetadata).resolve(node.path),
             { kind: node.type },
           );
           node.meta = { ...toMeta(obj, nodes[node.path]), loaded: true };

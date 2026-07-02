@@ -2,6 +2,8 @@
 // - @eox/map
 // - @eox/map/src/plugins/globe   (adds the 3D globe projection)
 // - @eox/map/src/plugins/advancedLayersAndSources   (adds the GeoZarr source)
+// and the scene lookup helper:
+//   import { fetchGeoZarrUrl } from "../shared/utils.js";
 
 import { LonLat } from "@openglobus/og"; //  needed for the fly-to feature
 
@@ -23,9 +25,20 @@ const locations = [
 // ../shared/utils.js, e.g.:
 //   const sceneUrls = await Promise.all(locations.map((l) => fetchGeoZarrUrl(l.bbox)));
 
+// True-color RGB style shared by every GeoZarr layer (provided).
+const style = {
+  gamma: 1.5,
+  color: [
+    "color",
+    ["interpolate", ["linear"], ["band", 1], 0, 0, 0.5, 255],
+    ["interpolate", ["linear"], ["band", 2], 0, 0, 0.5, 255],
+    ["interpolate", ["linear"], ["band", 3], 0, 0, 0.5, 255],
+  ],
+};
+
 // Build the layers: uncomment the OSM base below (crossOrigin lets the globe read
 // tile pixels), then add one WebGLTile GeoZarr layer per location (bands
-// ["b04","b03","b02"], same true-color style as before. EOxMap uses a hybrid
+// ["b04","b03","b02"], with the provided `style`). EOxMap uses a hybrid
 // renderer: OpenGlobus falls back to OpenLayers canvas rendering for the GeoZarr
 // layers and reprojects the result onto the globe.
 /** @type {import("@eox/map").EoxLayer[]} */
@@ -49,15 +62,19 @@ const map = document.querySelector("#globe");
 const toggleButton = document.querySelector("#toggle");
 const flyButtons = document.querySelectorAll(".fly");
 
-// Step 3: Configure `map`:
-// - assign the layers
-// - set center [12.12, 46.54] and zoom 7 to frame the first scene (Milano Cortina)
-// The map starts in 2D (projection="EPSG:3857" in the HTML); the toggle button
-// switches it to the 3D globe.
+// Step 3: Configure the map. It starts in 2D the toggle button switches
+// it to the 3D globe.
+// Object.assign(map, {
+//   layers,
+//   center: [12.12, 46.54], // frames the first scene (Milano Cortina)
+//   zoom: 7,
+//   globeConfig: {
+//     terrain: true,
+//   },
+// });
 
 // Step 4: Wire `toggleButton`  On click, flip map.projection
-//   between "EPSG:3857" and "globe", enable terrain when entering the globe
-//   (map.globeConfig.terrain = true), and update the button label.
+//   between "EPSG:3857" and "globe" and update the button label.
 
 // Fly to a location when a toolbar button is clicked. On the globe, the camera
 // animates with flyLonLat; in 2D we can simply recenter the map.

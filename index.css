@@ -3,6 +3,7 @@
 /* FOUC guard: index.html hides the body until index.js adds `.ready`. */
 body:not(.ready) {
   visibility: hidden;
+  opacity: 0;
 }
 body {
   background: var(--background);
@@ -21,9 +22,6 @@ body {
 .section-head h2,
 .exercise h3 {
   font-family: var(--eopf-font-head);
-}
-body:not(.ready) {
-  opacity: 0;
 }
 
 /* Thin brand accent across the very top of the page. */
@@ -259,7 +257,7 @@ main.container > .section-head:first-child {
 
 /* ---- GeoZarr explorer (modal) ---- */
 .ze-modal {
-  width: min(960px, 92vw);
+  width: min(1240px, 95vw);
   max-height: 85vh;
   padding: 0;
   border: 1px solid var(--outline);

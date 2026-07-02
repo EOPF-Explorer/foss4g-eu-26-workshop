@@ -68,11 +68,11 @@ Object.assign(map, {
   },
 });
 
-const toggle = document.querySelector("#toggle");
-toggle.addEventListener("click", () => {
+const toggleButton = document.querySelector("#toggle");
+toggleButton.addEventListener("click", () => {
   const is2D = map.projection !== "globe";
   map.projection = is2D ? "globe" : "EPSG:3857";
-  toggle.textContent = is2D ? "Switch to 2D" : "Switch to 3D";
+  toggleButton.textContent = is2D ? "Switch to 2D" : "Switch to 3D";
 });
 
 document.querySelectorAll(".fly").forEach((btn) => {

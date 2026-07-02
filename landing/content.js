@@ -7,6 +7,10 @@ export const hero = {
   title: "EOPF Sentinel Zarr Explorer",
   lede: "Hands-on exercises for visualizing Sentinel GeoZarr data in the browser and in Python.",
   cta: { label: "Start exercise 01", dir: "01-eox-map-geozarr" },
+  slides: {
+    label: "Slides",
+    href: "/assets/EOPF%20Explorer%20FOSS4G%20EU%2026.pdf",
+  },
   meta: "8 hands-on exercises · ~3.5 hours",
 };
 
@@ -39,7 +43,7 @@ export const sections = [
         dir: "02-eox-advanced",
         title: "Advanced Visualization",
         description:
-          "Add interactive band, gamma, and cloud-mask controls using the layerConfig pattern, pulling bands from multiple groups.",
+          "Explore interactive band and gamma controls built with the layerConfig pattern, then add a cloud mask driven by a band from another group.",
         status: "active",
       },
       {

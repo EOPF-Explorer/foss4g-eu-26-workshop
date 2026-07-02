@@ -10,7 +10,7 @@ Target result:
 
 ## Import packages
 
-In [main.js](./main.js), import the required packages:
+[main.js](./main.js) imports the required packages:
 
 - `@eox/layout` — grid layout system
 - `@eox/map` — map component
@@ -27,7 +27,7 @@ These are bare specifiers resolved by Vite from `node_modules`. CDN equivalents 
 
 ## Add HTML
 
-In [index.html](./index.html), create a layout with two panels using `eox-layout` (12-column grid):
+In [index.html](./index.html), uncomment the provided layout - two panels on an `eox-layout` (12-column grid):
 
 - **Left panel** (3 columns): `eox-layercontrol`
 - **Right panel** (9 columns): `eox-map`
@@ -39,9 +39,9 @@ Hint: use `eox-layout-item` with `x`, `y`, `w`, `h` attributes to position items
 
 ## Configure the map layers
 
-In [main.js](./main.js), define a layers array with two layer groups:
+In [main.js](./main.js), uncomment the two provided layers:
 
-### Base Layers
+### Base Layer
 
 An OpenStreetMap base layer using `XYZ` source type. The EOX tile server URL follows the pattern:
 ```
@@ -59,13 +59,12 @@ import { fetchGeoZarrUrl } from "../shared/utils.js";
 const zarrUrl = await fetchGeoZarrUrl([14.0, 41.0, 14.2, 41.2]); // around Napoli
 ```
 
-Configure it for true-color RGB using bands `["b04", "b03", "b02"]`.
+It renders true-color RGB from bands `["b04", "b03", "b02", "b08"]` — the fourth
+band, `b08` (NIR), is ignored by the true-color style but is needed for the NDVI style later.
 
-For the style, you'll need to:
-- Set `gamma: 1.5` for brightness correction
-- Use `["interpolate", ["linear"], ["band", n], 0, 0, 0.5, 255]` to scale each band's reflectance (0-0.5) to display values (0-255)
-
-Set `layerControlExpand: true` on the data group so it's expanded in the layer control by default.
+The provided style:
+- Sets `gamma: 1.5` for brightness correction
+- Uses `["interpolate", ["linear"], ["band", n], 0, 0, 0.5, 255]` to scale each band's reflectance (0-0.5) to display values (0-255)
 
 ### Key concepts
 
@@ -79,6 +78,34 @@ Set `layerControlExpand: true` on the data group so it's expanded in the layer c
 ## Assign to the map
 
 Use `Object.assign` on the map element to set `layers`, `center` ([14.09, 41.1] for the Napoli area), and `zoom` (10).
+
+## Toggle the layer between true color and NDVI
+
+The map is not locked to one visualization: a layer's `style` can be swapped at
+runtime. You'll restyle the **same** GeoZarr layer with the provided
+`#ndvi-button` (uncomment it in [index.html](./index.html)), toggling between
+true color and NDVI.
+
+NDVI (Normalized Difference Vegetation Index) highlights vegetation:
+
+```
+NDVI = (NIR - Red) / (NIR + Red)
+```
+
+With the source's `bands: ["b04", "b03", "b02", "b08"]`, Red is band `1` and NIR
+is band `4`. Both styles are provided as variables in main.js: `trueColorStyle`
+and `ndviStyle` — the latter computes the ratio in a WebGL expression and maps
+it through a grey → yellow → green color ramp. The button listener that flips
+between them is provided too; your task is the `updateStyle(style)` function:
+
+1. Copy the current definitions: `const layers = [...map.layers]`
+2. **Replace** the GeoZarr definition with a copy carrying the new style:
+   `layers[1] = { ...layers[1], style }`
+3. Reassign `map.layers = layers`
+
+eox-map diffs the layer definitions on assignment and restyles the existing
+layer in place — no reload, the source and loaded tiles stay untouched.
+
 
 ## Compare
 

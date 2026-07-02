@@ -2,9 +2,8 @@
 
 The same EOxElements components run inside a **Python notebook** via
 [`ipyeoxelements`](https://github.com/EOX-A/EOxElements-Jupyter)
-(built on [anywidget](https://anywidget.dev/)). The map config is the **same dict**
-that was written in JSON in exercise 01. Python class names map automatically to web
-components (`EOxMap` → `<eox-map>`).
+(built on [anywidget](https://anywidget.dev/)). The map config is the **same layer shape** that was written in JSON in exercise 01, as a Python dict. 
+Python class names map automatically to web components (`EOxMap` → `<eox-map>`).
 
 ## Run the notebook
 

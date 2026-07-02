@@ -4,8 +4,8 @@ In exercise 01 the band combination and styling were fixed. This exercise makes 
 
 This exercise has two parts:
 
-- **Part A — Band manipulation**: interactive channel / max / gamma controls.
-- **Part B — Multi-group**: pull a band from a *different group* of the same store and use it to mask clouds.
+- **Part A — Band manipulation**: interactive channel / max / gamma controls. The code is in main.js, commented — uncomment it, run it, and read it to learn the pattern.
+- **Part B — Multi-group** (your task): pull a band from a *different group* of the same store and use it to mask clouds, extending Part A's config.
 
 ## Result
 
@@ -50,18 +50,20 @@ Reuse the two-panel layout from exercise 01. The only change is on the layer con
 
 ## Part A — The layerConfig pattern
 
-Use a `WebGLTile` GeoZarr layer with **four** bands so the SWIR band is available too: `["b04", "b03", "b02", "b11"]`. These map to band indices 1-4 in style expressions.
+Uncomment the code in [main.js](./main.js) and read it against this section.
 
-On the layer's `properties`, add a `layerConfig` object with:
+The `WebGLTile` GeoZarr layer loads **four** bands so the SWIR band is available too: `["b04", "b03", "b02", "b11"]`. These map to band indices 1-4 in style expressions.
+
+On the layer's `properties`, the `layerConfig` object has:
 
 - `type: "style"` — form changes update the layer's style `variables`
 - `schema` — a JSON Schema whose properties become form controls:
   - `red` / `green` / `blue`: `type: "number"`, `enum: [1, 2, 3, 4]`, with `options.enum_titles` of `["Red (B04)", "Green (B03)", "Blue (B02)", "SWIR (B11)"]` — these render as dropdowns
   - `redMax` / `greenMax` / `blueMax` / `gamma`: `type: "number"` with `format: "range"` — these render as sliders
 
-The form is rendered by `eox-jsonform`, built on [`@json-editor/json-editor`](https://github.com/json-editor/json-editor). Field types, `format`s, validation, and nested objects from that library are all available in your `schema`. See the [eox-jsonform docs](https://eox-a.github.io/EOxElements/?path=/docs/elements-eox-jsonform--docs) for the full reference.
+The form is rendered by `eox-jsonform`, built on [`@json-editor/json-editor`](https://github.com/json-editor/json-editor). Field types, `format`s, validation, and nested objects from that library are all available in a `schema`. See the [eox-jsonform docs](https://eox-a.github.io/EOxElements/?path=/docs/elements-eox-jsonform--docs) for the full reference.
 
-Also set `layerControlExpand: true` and `layerControlToolsExpand: true` to start the layer and its tools expanded.
+`layerControlExpand: true` and `layerControlToolsExpand: true` start the layer and its tools expanded.
 
 ### Wiring the schema to the style
 
@@ -84,7 +86,7 @@ style: {
 
 ## Assign and explore
 
-Assign the layers and set `center: [14.52, 49.08]`, `zoom: 8` (Czech Republic, south Bohemia).
+Uncomment the map assignment: `center: [14.52, 49.08]`, `zoom: 8` (Czech Republic, south Bohemia).
 
 Open the layer's config tool and try a false-color SWIR composite: set Red → SWIR (B11), Green → Red (B04), Blue → Green (B03). Vegetation and moisture respond differently from true color.
 
@@ -92,7 +94,7 @@ Open the layer's config tool and try a false-color SWIR composite: set Red → S
 
 A GeoZarr store is a tree of groups. Every band so far came from `measurements/reflectance`. The same store also has a `quality/probability` group containing a per-pixel cloud probability band (`cld`, in %). That band can be pulled into the same layer to mask clouds.
 
-Switch the source to multi-group form: point `url` at the store root (drop the `/measurements/reflectance` suffix) and assign each band its own `group`:
+Switch the source to multi-group form: point `url` at the store root (drop the `/measurements/reflectance` suffix — plain-string bands resolve inside one group, object bands each name their own) and assign each band its own `group`:
 
 ```js
 source: {

@@ -3,6 +3,8 @@
 // - @eox/map
 // - @eox/layercontrol
 // - @eox/jsonform   (renders the config form)
+// and the scene lookup helper:
+//   import { fetchGeoZarrUrl } from "../shared/utils.js";
 
 // After importing, add (uncomment) the <eox-layout>, <eox-map>, and
 // <eox-layercontrol> elements in index.html for the components to render.
