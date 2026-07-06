@@ -1,4 +1,6 @@
-# EOPF Sentinel Zarr Explorer — FOSS4G Workshop
+# EOPF Sentinel Zarr Explorer - FOSS4G Workshop
+
+_[FOSS4G Europe 2026](https://2026.europe.foss4g.org/) - Timișoara, Romania, 3 July 2026_
 
 Web visualization techniques and resources for the **GeoZarr** specification.
 
@@ -91,7 +93,7 @@ exercises have a `.ipynb`. Every folder has a `README.md` to follow.
 
 Found a bug or want to improve something? Open an issue or pull request on the relevant repository:
 
-- [This workshop](https://github.com/EOPF-Explorer/FOSS4G-EU-26-Workshop)
+- [This workshop](https://github.com/EOPF-Explorer/foss4g-workshop)
 - [EOxElements](https://github.com/EOX-A/EOxElements)
 - [EOxElements-Jupyter](https://github.com/EOX-A/EOxElements-Jupyter)
 - [eodash](https://github.com/eodash/eodash)

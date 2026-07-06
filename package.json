@@ -1,12 +1,12 @@
 {
-  "name": "@eopf-explorer/foss4g-eu-26-workshop",
+  "name": "@eopf-explorer/foss4g-workshop",
   "version": "1.0.0",
   "description": "Workshop for the EOPF Sentinel Zarr Explorer: visualizing cloud-native GeoZarr Copernicus Sentinel data with EOxElements, eox-storytelling, TiTiler, eodash, and Jupyter EOxElements.",
   "license": "MIT",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EOPF-Explorer/foss4g-eu-26-workshop.git"
+    "url": "git+https://github.com/EOPF-Explorer/foss4g-workshop.git"
   },
   "scripts": {
     "dev": "vite",
